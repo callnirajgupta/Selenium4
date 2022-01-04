@@ -17,11 +17,17 @@ public class SetWindowOrientation {
 	public static void main(String[] args){
         WebDriverManager.firefoxdriver().setup();
         
-        FirefoxDriver driver = new FirefoxDriver();
-  
-        Path path = Paths.get(System.getProperty("user.dir")+"/src/main/resources/dark_reader-4.9.43-an+fx.xpi");
-        String addon_id= driver.installExtension(path);
-        driver.uninstallExtension(addon_id);
+        ChromeDriver driver = new ChromeDriver();
+
+        DevTools  devTools = driver.getDevTools();
+        devTools.createSession();
+
+        Command deviceOrientationCmd = DeviceOrientation.setDeviceOrientationOverride(20,20,5);
+
+        devTools.send(deviceOrientationCmd);
+
+        driver.get("https://www.facebook.com");
+
     }
 
 }

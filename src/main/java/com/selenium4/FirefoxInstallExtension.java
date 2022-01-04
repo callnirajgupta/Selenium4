@@ -12,12 +12,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class FirefoxInstallExtension {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		WebDriverManager.firefoxdriver().setup();
-		FirefoxDriver driver = new FirefoxDriver();
-		Path path = Paths.get(System.getProperty("user.dir")+"/src/main/resources/Firefox Installer.exe");
-        String addon_id= driver.installExtension(path);
-        //driver.uninstallExtension(addon_id);
+		 WebDriverManager.firefoxdriver().setup();
+	        
+	        FirefoxDriver driver = new FirefoxDriver();
+	  
+	        Path path = Paths.get(System.getProperty("user.dir")+"/src/main/resources/dark_reader-4.9.43-an+fx.xpi");
+	        String addon_id= driver.installExtension(path);
+	        driver.uninstallExtension(addon_id);
 		
 	}
 
